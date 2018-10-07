@@ -1,0 +1,17 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+    Sell A Book
+{% endblock %}
+
+{% block content %}
+
+<h1>Sell A Book</h1>
+
+<form class="sell-form" action="/items/sell_book_form/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Post this Ad">
+</form>
+
+{% endblock %}

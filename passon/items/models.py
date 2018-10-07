@@ -1,5 +1,4 @@
 from django.db import models
-# from django.contrib.auth.models import User
 from accounts.models import Profile
 from enum import Enum
 
@@ -38,7 +37,7 @@ class QualityChoice(Enum):
 
 
 class Book(models.Model):
-    # seller (Foreign Key)
+    # seller (Foreign Key), ond_delete to be set properly!!!
     seller = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='book_seller')
 
     # buyer (Foreign Key)
@@ -53,11 +52,14 @@ class Book(models.Model):
     # edition
     edition = models.IntegerField(blank=True, null=True)
 
+    # is_engg ? Then:
+    is_engg = models.BooleanField()
+
     # branch
-    branch = models.CharField(max_length=8, choices=[(tag.name, tag.value) for tag in BranchChoice])
+    branch = models.CharField(max_length=8, choices=[(tag.name, tag.value) for tag in BranchChoice], blank=True)
 
     # sem
-    sem = models.CharField(max_length=2, choices=[(tag.name, tag.value) for tag in SemChoice])
+    sem = models.CharField(max_length=2, choices=[(tag.name, tag.value) for tag in SemChoice], blank=True)
 
     # description
     description = models.TextField(max_length=1000)
@@ -74,12 +76,18 @@ class Book(models.Model):
     # is_delivered
     is_delivered = models.BooleanField()
 
+    # post date
+    post_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    # IMAGE FIELD
+    # image = models.ImageField(default='default.png', blank=True)
+
     def __str__(self):
         return self.title + ", " + self.author
 
 
 class Bike(models.Model):
-    # seller(Foreign Key)
+    # seller(Foreign Key), ond_delete to be set properly!!!
     seller = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='bike_seller')
 
     # buyer (Foreign Key)
@@ -107,13 +115,19 @@ class Bike(models.Model):
     # is_delivered
     is_delivered = models.BooleanField()
 
+    # post date
+    post_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    # IMAGE FIELD
+    # image = models.ImageField(default='default.png', blank=True)
+
     def __str__(self):
         return self.title
 
 
 class Item(models.Model):
-    # seller(Foreign Key)
-    seller = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='item_seller')
+    # seller(Foreign Key), ond_delete to be set properly!!!
+    seller = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='Item_seller')
 
     # buyer (Foreign Key)
     buyer = models.ForeignKey(Profile, default=None, on_delete=models.SET(None), related_name='item_buyer')
@@ -122,7 +136,7 @@ class Item(models.Model):
     title = models.CharField(max_length=200)
 
     # description
-    description = models.TextField(max_length=1000)
+    description = models.TextField(max_length=500)
 
     # quality
     quality = models.CharField(max_length=3, choices=[(tag.name, tag.value) for tag in QualityChoice])
@@ -135,6 +149,12 @@ class Item(models.Model):
 
     # is_delivered
     is_delivered = models.BooleanField()
+
+    # post date
+    post_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    # IMAGE FIELD
+    # image = models.ImageField(default='default.png', blank=True)
 
     def __str__(self):
         return self.title

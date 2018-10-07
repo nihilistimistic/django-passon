@@ -1,0 +1,26 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+    Your Home
+{% endblock %}
+
+{% block content %}
+
+<h1>Your Home</h1>
+    <nav>
+        <a href="{% url 'items:books_list' %}">Books |</a>
+        <a href="{% url 'items:bikes_list' %}"> Bikes |</a>
+        <a href="{% url 'items:items_list' %}"> Misc |</a>
+        <ul>
+            <a href="{% url 'items:sell_book_form' %}"> Sell a Book |</a>
+            <a href="{% url 'items:sell_bike_form' %}"> Sell a Cycle |</a>
+            <a href="{% url 'items:sell_item_form' %}"> Sell something else |</a>
+        </ul>
+        <a href="#"> Edit an uploaded ad |</a>
+        <a href="{% url 'transactions:cart' %}"> Your Cart |</a>
+        <a href="{% url 'transactions:transactions' %}"> Your Transactions |</a>
+        <a href="#"> Edit Profile |</a>
+        <a href="{% url 'accounts:logout' %}"> Logout</a>
+    </nav>
+
+{% endblock %}
