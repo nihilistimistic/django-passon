@@ -18,9 +18,9 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    # create a path to homepage and items list
-    # path(r'', include('')),
     path(r'admin/', admin.site.urls),
     path(r'accounts/', include('accounts.urls')),
     path(r'items/', include('items.urls')),
+    path(r'transactions/', include('transactions.urls')),
+    path(r'home/', include('home.urls')),
 ]
