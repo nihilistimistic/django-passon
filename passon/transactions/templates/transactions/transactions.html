@@ -1,0 +1,49 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+    Your Transactions
+{% endblock %}
+
+{% block content %}
+
+<!--IF TRANSACTION QUERY NOT EMPTY-->
+<h1>Your Transactions</h1>
+
+<!--IF BOOK QUERY NOT EMPTY-->
+<h3>Books</h3>
+<table>
+    <thead>
+    <tr>Date</tr>
+    <tr>Book Title</tr>
+    <tr>Price</tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<!--IF BIKE QUERY NOT EMPTY-->
+<h3>Bikes</h3>
+<table>
+    <thead>
+    <tr>Date</tr>
+    <tr>Bike</tr>
+    <tr>Price</tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<!--IF ITEM QUERY NOT EMPTY-->
+<h3>Items</h3>
+<table>
+    <thead>
+    <tr>Date</tr>
+    <tr>Item</tr>
+    <tr>Price</tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<!--ELSE DISPLAY EMPTY-->
+{% endblock %}
